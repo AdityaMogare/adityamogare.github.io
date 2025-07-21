@@ -8,148 +8,266 @@
     <meta name="description" content="Aditya Prasanna  Mogare - AI & Web Developer Portfolio">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
         }
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-900">
+    <!-- Navbar -->
     <header class="fixed w-full bg-white shadow z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
             <h1 class="text-lg font-extrabold w-full sm:w-auto text-center sm:text-left">Aditya Mogare</h1>
-            <nav
-                class="flex flex-wrap justify-center sm:justify-end w-full sm:w-auto space-x-4 text-sm font-medium mt-2 sm:mt-0">
-                <a href="#about" class="hover:text-blue-600">About</a>
-                <a href="#education" class="hover:text-blue-600">Education</a>
-                <a href="#experience" class="hover:text-blue-600">Experience</a>
-                <a href="#projects" class="hover:text-blue-600">Projects</a>
-                <a href="#contact" class="hover:text-blue-600">Contact</a>
+            <nav id="navbar" class="hidden sm:flex flex-wrap justify-center sm:justify-end w-full sm:w-auto space-x-4 text-sm font-medium mt-2 sm:mt-0">
+                <a href="#about" class="hover:text-blue-600 nav-link">About</a>
+                <a href="#education" class="hover:text-blue-600 nav-link">Education</a>
+                <a href="#experience" class="hover:text-blue-600 nav-link">Experience</a>
+                <a href="#projects" class="hover:text-blue-600 nav-link">Projects</a>
+                <a href="#contact" class="hover:text-blue-600 nav-link">Contact</a>
                 <a href="Aditya_Mogare_Resume.pdf" download class="text-blue-500 hover:underline">Download Resume</a>
             </nav>
+            <button id="menu-btn" class="sm:hidden ml-auto text-2xl focus:outline-none" aria-label="Open Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="sm:hidden hidden bg-white shadow-md px-4 py-2">
+            <a href="#about" class="block py-2 nav-link">About</a>
+            <a href="#education" class="block py-2 nav-link">Education</a>
+            <a href="#experience" class="block py-2 nav-link">Experience</a>
+            <a href="#projects" class="block py-2 nav-link">Projects</a>
+            <a href="#contact" class="block py-2 nav-link">Contact</a>
+            <a href="Aditya_Mogare_Resume.pdf" download class="block py-2 text-blue-500">Download Resume</a>
         </div>
     </header>
 
-    <section id="home"
-        class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-blue-300 to-blue-600 text-white text-center px-4 pt-28 sm:pt-32">
-        <img src="profile.jpg" alt="Aditya Mogare" class="w-52 h-52 sm:w-36 sm:h-36 rounded-full shadow-lg mb-6">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-2">Aditya Prasanna Mogare</h2>
-        <p class="text-md sm:text-lg mb-4 max-w-2xl">Turning code into impact | MSCS @ USC | AI + Web Dev Enthusiast |
-            Building real-world solutions using tech</p>
-        <div class="space-x-4">
-            <a href="#projects"
-                class="bg-white text-blue-600 px-4 sm:px-5 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View
-                Projects</a>
-            <a href="Aditya_Mogare_Resume.pdf" download
-                class="border border-white px-4 sm:px-5 py-2 rounded-full hover:bg-white hover:text-blue-600 transition">Resume</a>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-400 via-blue-600 to-indigo-700 text-white text-center px-4 pt-28 sm:pt-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-blue-600 to-indigo-700 opacity-80 -z-10"></div>
+        <img src="profile.jpg" alt="Aditya Mogare profile photo" class="w-44 h-44 sm:w-52 sm:h-52 rounded-full border-4 border-white shadow-xl mb-6 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover" tabindex="0">
+        <h2 class="text-4xl sm:text-5xl font-extrabold mb-2 drop-shadow-lg">Aditya Prasanna Mogare</h2>
+        <p class="text-lg sm:text-xl mb-6 max-w-2xl mx-auto font-medium">Turning code into impact | MSCS @ USC | AI + Web Dev Enthusiast | Building real-world solutions using tech</p>
+        <div class="space-x-4 mb-4">
+            <a href="#projects" class="bg-white text-blue-700 px-6 py-2 rounded-full font-bold shadow hover:bg-blue-100 transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-400">View Projects</a>
+            <a href="Aditya_Mogare_Resume.pdf" download class="border-2 border-white px-6 py-2 rounded-full font-bold hover:bg-white hover:text-blue-700 transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white">Resume</a>
+        </div>
+        <div class="flex justify-center space-x-4 mt-2">
+            <a href="https://linkedin.com/in/aditya-mogare-47382a1b5" target="_blank" aria-label="LinkedIn" class="text-white hover:text-blue-200 text-2xl"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/AdityaMogare" target="_blank" aria-label="GitHub" class="text-white hover:text-blue-200 text-2xl"><i class="fab fa-github"></i></a>
+            <a href="https://leetcode.com/u/adityapmogare/" target="_blank" aria-label="LeetCode" class="text-white hover:text-blue-200 text-2xl"><i class="fa-solid fa-code"></i></a>
         </div>
     </section>
 
-    <main class="max-w-5xl mx-auto px-4 py-10 space-y-16">
-        <section id="about">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4">About Me</h2>
-            <p class="text-base sm:text-lg leading-relaxed">
-                Hello! I'm Aditya Mogare, a computer science enthusiast whose journey was sparked by watching Iron Man.
-                Inspired by Tony Stark’s innovative brilliance, I became determined to leverage technology and AI to
-                create meaningful impacts.
-                Currently pursuing my Master of Science in Computer Science at the University of Southern California, I
-                thrive on embracing new challenges, rapidly mastering emerging technologies, and excelling in
-                domain-driven design, responsive web design, website optimization, and AI-driven applications.
-                I am eager to collaborate, innovate, and use AI to shape the future—much like the visionary Iron Man who
-                inspired me. Let's connect and drive positive change through cutting-edge technology!
-
+    <main class="max-w-5xl mx-auto px-4 py-10 space-y-20">
+        <!-- About -->
+        <section id="about" class="fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">About Me</h2>
+            <p class="text-lg leading-relaxed">
+                Hello! I'm Aditya Mogare, a computer science enthusiast whose journey was sparked by watching Iron Man. Inspired by Tony Stark’s innovative brilliance, I became determined to leverage technology and AI to create meaningful impacts.<br><br>
+                Currently pursuing my Master of Science in Computer Science at the University of Southern California, I thrive on embracing new challenges, rapidly mastering emerging technologies, and excelling in domain-driven design, responsive web design, website optimization, and AI-driven applications.<br><br>
+                I am eager to collaborate, innovate, and use AI to shape the future—much like the visionary Iron Man who inspired me. Let's connect and drive positive change through cutting-edge technology!
             </p>
         </section>
 
-        <section id="education">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4">Education</h2>
-            <div class="space-y-4">
-                <div class="bg-white shadow-md rounded-lg p-4">
-                    <h3 class="font-semibold text-lg">University of Southern California</h3>
-                    <p>MS in Computer Science | GPA: 3.4/4.0</p>
-                    <p class="text-sm text-gray-600">Courses: Deep Learning, NLP, Analysis of Algorithms</p>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-4">
-                    <h3 class="font-semibold text-lg">University of Mumbai – Thakur College of Engineering</h3>
-                    <p>BE in Computer Engineering | GPA: 9.63/10</p>
-                    <p class="text-sm text-gray-600">Courses: DSA, CN, OS, DBMS</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4">Experience</h2>
-            <div class="space-y-4">
-                <div class="bg-white shadow-md rounded-lg p-4">
-                    <h3 class="font-semibold text-lg">Software Dev Intern @ Interdependent</h3>
-                    <p class="text-sm text-gray-600">May 2025 – Aug 2025</p>
-                    <ul class="list-disc list-inside">
-                        <li>Built REST APIs & React UIs using Miro SDK</li>
-                        <li>Fine-tuned LLMs for screenplay analysis</li>
-                        <li>Built AI budget/scheduling tools</li>
-                    </ul>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-4">
-                    <h3 class="font-semibold text-lg">Research Assistant @ USC Viterbi</h3>
-                    <p class="text-sm text-gray-600">Feb 2025 – Jun 2025</p>
-                    <ul class="list-disc list-inside">
-                        <li>Improved OCTA image workflows (+5% AUC)</li>
-                        <li>Designed CNN models using TensorFlow</li>
-                    </ul>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-4">
-                    <h3 class="font-semibold text-lg">Full Stack Intern @ HiringTek</h3>
-                    <p class="text-sm text-gray-600">Aug 2022 – Aug 2023</p>
-                    <ul class="list-disc list-inside">
-                        <li>Built OpenAI-powered Question Generator</li>
-                        <li>Managed CI/CD pipelines with Kubernetes</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4">Projects</h2>
-            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2">
-                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition">
-                    <h3 class="text-xl font-semibold mb-2">Legal QA System</h3>
-                    <p class="text-sm">LLMs + RAG + Sentence Transformers for semantic search over 100K legal docs</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition">
-                    <h3 class="text-xl font-semibold mb-2">EcomForecast</h3>
-                    <p class="text-sm">Advanced forecasting platform (SMA, LSTM) | Finalist @ ICCSI 2023, IIT Madras</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition">
-                    <h3 class="text-xl font-semibold mb-2">VR Framework for Autism</h3>
-                    <p class="text-sm">Immersive A-Frame/JS learning system for ASD kids using Neural Style Transfer</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4">Contact</h2>
-            <ul class="text-base sm:text-lg space-y-2">
-                <li>Email: <a href="mailto:mogare@usc.edu" class="text-blue-600">mogare@usc.edu</a></li>
-                <li>Phone: +1 (213) 756-4828</li>
-                <li>LinkedIn: <a href="https://linkedin.com/in/aditya-mogare-47382a1b5"
-                        class="text-blue-600">aditya-mogare</a></li>
-                <li>GitHub: <a href="https://github.com/AdityaMogare" class="text-blue-600">@AdityaMogare</a></li>
-                <li>LeetCode: <a href="https://leetcode.com/u/adityapmogare/" class="text-blue-600">@adityapmogare</a>
+        <!-- Education Timeline -->
+        <section id="education" class="fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8">Education</h2>
+            <ol class="relative border-l-4 border-blue-500 ml-4 space-y-8">
+                <li class="mb-10 ml-6">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full -left-4 ring-4 ring-white"><i class="fa-solid fa-graduation-cap text-white"></i></span>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <h3 class="font-semibold text-xl">University of Southern California</h3>
+                        <p class="text-base">MS in Computer Science | GPA: 3.4/4.0</p>
+                        <p class="text-sm text-gray-600">Courses: Deep Learning, NLP, Analysis of Algorithms</p>
+                    </div>
                 </li>
+                <li class="ml-6">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-400 rounded-full -left-4 ring-4 ring-white"><i class="fa-solid fa-university text-white"></i></span>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <h3 class="font-semibold text-xl">University of Mumbai – Thakur College of Engineering</h3>
+                        <p class="text-base">BE in Computer Engineering | GPA: 9.63/10</p>
+                        <p class="text-sm text-gray-600">Courses: DSA, CN, OS, DBMS</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section id="experience" class="fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8">Experience</h2>
+            <ol class="relative border-l-4 border-indigo-500 ml-4 space-y-8">
+                <li class="mb-10 ml-6">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-500 rounded-full -left-4 ring-4 ring-white"><i class="fa-solid fa-briefcase text-white"></i></span>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <h3 class="font-semibold text-xl">Software Dev Intern @ Interdependent</h3>
+                        <p class="text-sm text-gray-600">May 2025 – Aug 2025</p>
+                        <ul class="list-disc list-inside mt-2 text-base">
+                            <li>Built REST APIs & React UIs using Miro SDK</li>
+                            <li>Fine-tuned LLMs for screenplay analysis</li>
+                            <li>Built AI budget/scheduling tools</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-10 ml-6">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-400 rounded-full -left-4 ring-4 ring-white"><i class="fa-solid fa-flask text-white"></i></span>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <h3 class="font-semibold text-xl">Research Assistant @ USC Viterbi</h3>
+                        <p class="text-sm text-gray-600">Feb 2025 – Jun 2025</p>
+                        <ul class="list-disc list-inside mt-2 text-base">
+                            <li>Improved OCTA image workflows (+5% AUC)</li>
+                            <li>Designed CNN models using TensorFlow</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="ml-6">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-300 rounded-full -left-4 ring-4 ring-white"><i class="fa-solid fa-laptop-code text-white"></i></span>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <h3 class="font-semibold text-xl">Full Stack Intern @ HiringTek</h3>
+                        <p class="text-sm text-gray-600">Aug 2022 – Aug 2023</p>
+                        <ul class="list-disc list-inside mt-2 text-base">
+                            <li>Built OpenAI-powered Question Generator</li>
+                            <li>Managed CI/CD pipelines with Kubernetes</li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8">Projects</h2>
+            <div class="grid gap-8 grid-cols-1 sm:grid-cols-2">
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-gavel text-blue-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Legal QA System</h3>
+                    </div>
+                    <p class="text-base mb-2">LLMs + RAG + Sentence Transformers for semantic search over 100K legal docs</p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-chart-line text-green-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">EcomForecast</h3>
+                    </div>
+                    <p class="text-base mb-2">Advanced forecasting platform (SMA, LSTM) | Finalist @ ICCSI 2023, IIT Madras</p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-vr-cardboard text-purple-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">VR Framework for Autism</h3>
+                    </div>
+                    <p class="text-base mb-2">Immersive A-Frame/JS learning system for ASD kids using Neural Style Transfer</p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Contact</h2>
+            <form class="bg-white rounded-lg shadow-md p-6 max-w-xl mx-auto space-y-4" name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact">
+                <div>
+                    <label for="name" class="block text-sm font-semibold mb-1">Name</label>
+                    <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-semibold mb-1">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-semibold mb-1">Message</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition">Send Message</button>
+            </form>
+            <ul class="text-base sm:text-lg space-y-2 mt-6 text-center">
+                <li>Email: <a href="mailto:mogare@usc.edu" class="text-blue-600 hover:underline">mogare@usc.edu</a></li>
+                <li>Phone: <a href="tel:+12137564828" class="text-blue-600 hover:underline">+1 (213) 756-4828</a></li>
+                <li>LinkedIn: <a href="https://linkedin.com/in/aditya-mogare-47382a1b5" class="text-blue-600 hover:underline">aditya-mogare</a></li>
+                <li>GitHub: <a href="https://github.com/AdityaMogare" class="text-blue-600 hover:underline">@AdityaMogare</a></li>
+                <li>LeetCode: <a href="https://leetcode.com/u/adityapmogare/" class="text-blue-600 hover:underline">@adityapmogare</a></li>
             </ul>
         </section>
     </main>
 
-    <footer class="text-center text-sm text-gray-500 py-6">&copy; 2025 Aditya Mogare</footer>
+    <!-- Footer -->
+    <footer class="text-center text-sm text-gray-500 py-6 bg-white border-t">
+        <div class="flex justify-center space-x-4 mb-2">
+            <a href="https://linkedin.com/in/aditya-mogare-47382a1b5" target="_blank" aria-label="LinkedIn" class="text-gray-500 hover:text-blue-600 text-xl"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/AdityaMogare" target="_blank" aria-label="GitHub" class="text-gray-500 hover:text-blue-600 text-xl"><i class="fab fa-github"></i></a>
+            <a href="https://leetcode.com/u/adityapmogare/" target="_blank" aria-label="LeetCode" class="text-gray-500 hover:text-blue-600 text-xl"><i class="fa-solid fa-code"></i></a>
+        </div>
+        &copy; 2025 Aditya Mogare
+    </footer>
 
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll and highlight nav
+        document.querySelectorAll('a.nav-link').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+                // Close mobile menu on click
+                if (window.innerWidth < 640) {
+                    mobileMenu.classList.add('hidden');
+                }
             });
         });
+
+        // Highlight current section in navbar
+        const sections = document.querySelectorAll('main section, #home');
+        const navLinks = document.querySelectorAll('a.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 80;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('text-blue-600', 'font-bold');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('text-blue-600', 'font-bold');
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const fadeInOnScroll = () => {
+            fadeEls.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
     </script>
 </body>
 
