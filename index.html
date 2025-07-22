@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aditya Prasanna Mogare | Portfolio</title>
-    <meta name="description" content="Aditya Prasanna  Mogare - AI & Web Developer Portfolio">
+    <meta name="description" content="Aditya Prasanna Mogare - AI & Web Developer Portfolio">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -22,6 +22,33 @@
             opacity: 1;
             transform: none;
         }
+        #resume-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        #resume-overlay iframe {
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+            border: none;
+            border-radius: 8px;
+        }
+        #resume-overlay .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -35,8 +62,8 @@
                 <a href="#education" class="hover:text-blue-600 nav-link">Education</a>
                 <a href="#experience" class="hover:text-blue-600 nav-link">Experience</a>
                 <a href="#projects" class="hover:text-blue-600 nav-link">Projects</a>
-                <a href="#resume" class="hover:text-blue-600 nav-link">Resume</a>
                 <a href="#contact" class="hover:text-blue-600 nav-link">Contact</a>
+                <a href="javascript:void(0)" id="view-resume" class="text-blue-500 hover:underline">View Resume</a>
                 <a href="Aditya_Mogare_Resume.pdf" download class="text-blue-500 hover:underline">Download Resume</a>
             </nav>
             <button id="menu-btn" class="sm:hidden ml-auto text-2xl focus:outline-none" aria-label="Open Menu">
@@ -50,19 +77,26 @@
             <a href="#projects" class="block py-2 nav-link">Projects</a>
             <a href="#resume" class="block py-2 nav-link">Resume</a>
             <a href="#contact" class="block py-2 nav-link">Contact</a>
+            <a href="javascript:void(0)" id="view-resume-mobile" class="block py-2 text-blue-500">View Resume</a>
             <a href="Aditya_Mogare_Resume.pdf" download class="block py-2 text-blue-500">Download Resume</a>
         </div>
     </header>
 
+    <!-- Resume Overlay -->
+    <div id="resume-overlay">
+        <span class="close-btn" id="close-resume">&times;</span>
+        <iframe src="Aditya_Mogare_Resume.pdf" title="Aditya Mogare Resume"></iframe>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-400 via-blue-600 to-indigo-700 text-white text-center px-4 pt-28 sm:pt-32 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-blue-600 to-indigo-700 opacity-80 -z-10"></div>
+        
         <img src="profile.jpg" alt="Aditya Mogare profile photo" class="w-44 h-44 sm:w-52 sm:h-52 rounded-full border-4 border-white shadow-xl mb-6 transition-transform duration-300 hover:scale-105 hover:shadow-2xl object-cover" tabindex="0">
         <h2 class="text-4xl sm:text-5xl font-extrabold mb-2 drop-shadow-lg">Aditya Prasanna Mogare</h2>
         <p class="text-lg sm:text-xl mb-6 max-w-2xl mx-auto font-medium">Turning code into impact | MSCS @ USC | AI + Web Dev Enthusiast | Building real-world solutions using tech</p>
         <div class="space-x-4 mb-4">
             <a href="#projects" class="bg-white text-blue-700 px-6 py-2 rounded-full font-bold shadow hover:bg-blue-100 transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-400">View Projects</a>
-            <a href="Aditya_Mogare_Resume.pdf" download class="border-2 border-white px-6 py-2 rounded-full font-bold hover:bg-white hover:text-blue-700 transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white">Resume</a>
+            <a href="javascript:void(0)" id="view-resume-hero" class="border-2 border-white px-6 py-2 rounded-full font-bold hover:bg-white hover:text-blue-700 transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white">View Resume</a>
         </div>
         <div class="flex justify-center space-x-4 mt-2">
             <a href="https://linkedin.com/in/aditya-mogare-47382a1b5" target="_blank" aria-label="LinkedIn" class="text-white hover:text-blue-200 text-2xl"><i class="fab fa-linkedin"></i></a>
@@ -91,7 +125,7 @@
                     <div class="bg-white shadow-md rounded-lg p-6">
                         <h3 class="font-semibold text-xl">University of Southern California</h3>
                         <p class="text-base">MS in Computer Science | GPA: 3.4/4.0</p>
-                        <p class="text-sm text-gray-600">Courses: Deep Learning, NLP, Analysis of Algorithms , Data Base Management , Web Technologies </p>
+                        <p class="text-sm text-gray-600">Courses: Deep Learning, NLP, Analysis of Algorithms, Database Management, Web Technologies</p>
                     </div>
                 </li>
                 <li class="ml-6">
@@ -99,7 +133,7 @@
                     <div class="bg-white shadow-md rounded-lg p-6">
                         <h3 class="font-semibold text-xl">University of Mumbai – Thakur College of Engineering</h3>
                         <p class="text-base">BE in Computer Engineering | GPA: 9.63/10</p>
-                        <p class="text-sm text-gray-600">Courses: Data Structures and Algorihtms ,Computer Networks, Operating System , Intro to Intelligent Systems, Microprocessors,Theory of Computation, Machine Learning</p>
+                        <p class="text-sm text-gray-600">Courses: Data Structures and Algorithms, Computer Networks, Operating System, Intro to Intelligent Systems, Microprocessors, Theory of Computation, Machine Learning</p>
                     </div>
                 </li>
             </ol>
@@ -114,11 +148,8 @@
                     <div class="bg-white shadow-md rounded-lg p-6">
                         <h3 class="font-semibold text-xl">Software Dev Intern @ Interdependent</h3>
                         <p class="text-sm text-gray-600">May 2025 – Aug 2025</p>
-                        <ul class="list-disc list-inside mt-2 text-base">
-                            <li>Built REST APIs & React UIs using Miro SDK</li>
-                            <li>Fine-tuned LLMs for screenplay analysis</li>
-                            <li>Built AI budget/scheduling tools</li>
-                        </ul>
+                        <ul class="list-disc list-inside text-left ml-4"> <li>Worked  with the founder to deliver production-ready software and accelerate cross-functional team velocity.</li> <li>Built RESTful APIs using Flask and JavaScript with webhooks to support real-time collaboration on Miro.</li> <li>Developed full-stack apps using React and Miro Web SDK, embedding intelligent features into digital canvases.</li> <li>Fine-tuned Transformer-based LLMs to evaluate screenplays and forecast budgets, boosting product efficiency and streamlining creative planning.</li>
+                            <li>Launched AI-powered tools for scheduling and budgeting to streamline film production workflows.</li> </ul>
                     </div>
                 </li>
                 <li class="mb-10 ml-6">
@@ -126,10 +157,8 @@
                     <div class="bg-white shadow-md rounded-lg p-6">
                         <h3 class="font-semibold text-xl">Research Assistant @ USC Viterbi</h3>
                         <p class="text-sm text-gray-600">Feb 2025 – Jun 2025</p>
-                        <ul class="list-disc list-inside mt-2 text-base">
-                            <li>Improved OCTA image workflows (+5% AUC)</li>
-                            <li>Designed CNN models using TensorFlow</li>
-                        </ul>
+                        
+                        <ul class="list-disc list-inside text-left ml-4"> <li>Optimized OCTA image preprocessing with normalization and augmentation, boosting AUC by 5% for CNN models.</li> <li>Designed CNN-based classification models (VGG, Inception, ResNet) for Diabetic Retinopathy with 92% validation accuracy.</li> <li>Leveraged AWS EC2 and Docker for scalable training and remote experimentation.</li> </ul>
                     </div>
                 </li>
                 <li class="ml-6">
@@ -137,63 +166,50 @@
                     <div class="bg-white shadow-md rounded-lg p-6">
                         <h3 class="font-semibold text-xl">Full Stack Intern @ HiringTek</h3>
                         <p class="text-sm text-gray-600">Aug 2022 – Aug 2023</p>
-                        <ul class="list-disc list-inside mt-2 text-base">
-                            <li>Built OpenAI-powered Question Generator</li>
-                            <li>Managed CI/CD pipelines with Kubernetes</li>
-                        </ul>
+                        <ul class="list-disc list-inside text-left ml-4"> <li>Developed a GPT-powered question generation engine using Flask and MongoDB</li> <li>Automated Kubernetes-based deployments across 4 environments, cutting setup and testing cycles by 25%.</li> <li>Maintained 30+ QA scripts in the test pipeline, ensuring 95%+ coverage for core modules like QA Bank and Evaluation workflows.</li> </ul>
                     </div>
                 </li>
             </ol>
         </section>
 
         <!-- Projects -->
-<section id="projects" class="fade-in">
-    <h2 class="text-3xl sm:text-4xl font-bold mb-8">Projects</h2>
-    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2">
-        <!-- Existing Projects -->
-        <!-- Legal QA System -->
-        <!-- EcomForecast -->
-        <!-- VR Framework for Autism -->
-
-        <!-- NotesMadeEasy -->
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
-            <div class="flex items-center mb-2">
-                <i class="fa-solid fa-book-open text-pink-600 text-2xl mr-3"></i>
-                <h3 class="text-xl font-semibold">NotesMadeEasy</h3>
+        <section id="projects" class="fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8">Projects</h2>
+            <div class="grid gap-8 grid-cols-1 sm:grid-cols-2">
+                <!-- NotesMadeEasy -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-book-open text-pink-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">NotesMadeEasy</h3>
+                    </div>
+                    <p class="text-base mb-2">An AI-powered note-taking assistant that converts lectures, PDFs, and YouTube videos into crisp, structured notes.</p>
+                    <a href="https://github.com/AdityaMogare/NotesMadeEasy" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                </div>
+                <!-- MetaBox Budget -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-wallet text-yellow-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">MetaBox Budget</h3>
+                    </div>
+                    <p class="text-base mb-2">An intelligent budgeting system for filmmakers to automate cost estimation and production planning using AI insights.</p>
+                    <a href="https://github.com/AdityaMogare/MetaBox-Budget" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                </div>
+                <!-- Automaton -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+                    <div class="flex items-center mb-2">
+                        <i class="fa-solid fa-robot text-indigo-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Automaton</h3>
+                    </div>
+                    <p class="text-base mb-2">Workflow automation tool built with Node.js and Python to manage recurring tasks, approvals, and custom integrations.</p>
+                    <a href="https://github.com/AdityaMogare/Automaton" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                </div>
             </div>
-            <p class="text-base mb-2">An AI-powered note-taking assistant that converts lectures, PDFs, and YouTube videos into crisp, structured notes.</p>
-            <a href="https://github.com/AdityaMogare/NotesMadeEasy" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
-        </div>
-
-        <!-- MetaBox Budget -->
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
-            <div class="flex items-center mb-2">
-                <i class="fa-solid fa-wallet text-yellow-600 text-2xl mr-3"></i>
-                <h3 class="text-xl font-semibold">MetaBox Budget</h3>
-            </div>
-            <p class="text-base mb-2">An intelligent budgeting system for filmmakers to automate cost estimation and production planning using AI insights.</p>
-            <a href="https://github.com/AdityaMogare/MetaBox-Budget" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
-        </div>
-
-        <!-- Automaton -->
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
-            <div class="flex items-center mb-2">
-                <i class="fa-solid fa-robot text-indigo-600 text-2xl mr-3"></i>
-                <h3 class="text-xl font-semibold">Automaton</h3>
-            </div>
-            <p class="text-base mb-2">Workflow automation tool built with Node.js and Python to manage recurring tasks, approvals, and custom integrations.</p>
-            <a href="https://github.com/AdityaMogare/Automaton" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
-        </div>
-    </div>
-</section>
-
-
         </section>
 
         <!-- Contact -->
         <section id="contact" class="fade-in">
             <h2 class="text-3xl sm:text-4xl font-bold mb-4">Contact</h2>
-            <form class="bg-white rounded-lg shadow-md p-6 max-w-xl mx-auto space-y-4" name="contact" method="POST" data-netlify="true">
+            <form class="bg-white rounded-lg shadow-md p-6 max-w-xl mx-auto space-y-4" name="contact" method="POST" data-netlify="true" id="contact-form">
                 <input type="hidden" name="form-name" value="contact">
                 <div>
                     <label for="name" class="block text-sm font-semibold mb-1">Name</label>
@@ -207,6 +223,7 @@
                     <label for="message" class="block text-sm font-semibold mb-1">Message</label>
                     <textarea id="message" name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
                 </div>
+                <div id="form-error" class="text-red-500 text-sm hidden">Please fill out all fields correctly.</div>
                 <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition">Send Message</button>
             </form>
             <ul class="text-base sm:text-lg space-y-2 mt-6 text-center">
@@ -226,7 +243,7 @@
             <a href="https://github.com/AdityaMogare" target="_blank" aria-label="GitHub" class="text-gray-500 hover:text-blue-600 text-xl"><i class="fab fa-github"></i></a>
             <a href="https://leetcode.com/u/adityapmogare/" target="_blank" aria-label="LeetCode" class="text-gray-500 hover:text-blue-600 text-xl"><i class="fa-solid fa-code"></i></a>
         </div>
-        &copy; 2025 Aditya Mogare
+        © 2025 Aditya Mogare
     </footer>
 
     <script>
@@ -235,6 +252,23 @@
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Resume overlay toggle
+        const resumeOverlay = document.getElementById('resume-overlay');
+        const viewResume = document.getElementById('view-resume');
+        const viewResumeMobile = document.getElementById('view-resume-mobile');
+        const viewResumeHero = document.getElementById('view-resume-hero');
+        const closeResume = document.getElementById('close-resume');
+
+        [viewResume, viewResumeMobile, viewResumeHero].forEach(btn => {
+            btn.addEventListener('click', () => {
+                resumeOverlay.style.display = 'flex';
+            });
+        });
+
+        closeResume.addEventListener('click', () => {
+            resumeOverlay.style.display = 'none';
         });
 
         // Smooth scroll and highlight nav
@@ -283,6 +317,25 @@
         };
         window.addEventListener('scroll', fadeInOnScroll);
         window.addEventListener('load', fadeInOnScroll);
+
+        // Contact form validation
+        const contactForm = document.getElementById('contact-form');
+        const formError = document.getElementById('form-error');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (name === '' || !emailRegex.test(email) || message === '') {
+                formError.classList.remove('hidden');
+                return;
+            }
+
+            formError.classList.add('hidden');
+            contactForm.submit();
+        });
     </script>
 </body>
 
