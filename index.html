@@ -176,6 +176,8 @@
         <section id="projects" class="fade-in">
             <h2 class="text-3xl sm:text-4xl font-bold mb-8">Projects</h2>
             <div class="grid gap-8 grid-cols-1 sm:grid-cols-2">
+
+                
                 <!-- NotesMadeEasy -->
                 <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
                     <div class="flex items-center mb-2">
@@ -185,6 +187,7 @@
                     <p class="text-base mb-2">An AI-powered note-taking assistant that converts lectures, PDFs, and YouTube videos into crisp, structured notes.</p>
                     <a href="https://github.com/AdityaMogare/NotesMadeEasy" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
                 </div>
+                
                 <!-- MetaBox Budget -->
                 <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
                     <div class="flex items-center mb-2">
@@ -203,6 +206,27 @@
                     <p class="text-base mb-2">Workflow automation tool built with Node.js and Python to manage recurring tasks, approvals, and custom integrations.</p>
                     <a href="https://github.com/AdityaMogare/Automaton" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
                 </div>
+                        <!-- EcomForecast -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+            <div class="flex items-center mb-2">
+                <i class="fa-solid fa-chart-line text-green-600 text-2xl mr-3"></i>
+                <h3 class="text-xl font-semibold">EcomForecast</h3>
+            </div>
+            <p class="text-base mb-2">A time-series forecasting platform using LSTM, GRU, and weighted moving averages to predict e-commerce sales trends and inventory demands.</p>
+            <a href="https://github.com/AdityaMogare/EcomForecast" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+        </div>
+
+        <!-- Legal QA System -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
+            <div class="flex items-center mb-2">
+                <i class="fa-solid fa-scale-balanced text-red-600 text-2xl mr-3"></i>
+                <h3 class="text-xl font-semibold">Legal QA System</h3>
+            </div>
+            <p class="text-base mb-2">A scalable legal-domain QA system using fine-tuned LLMs (LLaMA/Mistral) with RAG and LoRA for fast, accurate question answering over 100K+ legal documents.</p>
+            <a href="https://github.com/AdityaMogare/Legal-QA-System-with-Fine-Tuned-LLMs-and-RAG" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+        </div>
+    </div>
+
             </div>
         </section>
 
@@ -261,11 +285,16 @@
         const viewResumeHero = document.getElementById('view-resume-hero');
         const closeResume = document.getElementById('close-resume');
 
-        [viewResume, viewResumeMobile, viewResumeHero].forEach(btn => {
-            btn.addEventListener('click', () => {
-                resumeOverlay.style.display = 'flex';
-            });
-        });
+        const resumeSrc = "Aditya 2025 Resume.pdf"; // Change if your resume is in a subfolder
+
+[viewResume, viewResumeMobile, viewResumeHero].forEach(btn => {
+    btn.addEventListener('click', () => {
+        const iframe = resumeOverlay.querySelector('iframe');
+        iframe.src = resumeSrc; // Dynamically set the source
+        resumeOverlay.style.display = 'flex';
+    });
+});
+
 
         closeResume.addEventListener('click', () => {
             resumeOverlay.style.display = 'none';
