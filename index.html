@@ -31,8 +31,9 @@
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: 9999; 
             background: rgba(0, 0, 0, 0.8);
-            z-index: 100;
+        
             justify-content: center;
             align-items: center;
         }
@@ -51,8 +52,33 @@
             font-size: 2rem;
             cursor: pointer;
         }
+
+        /* Additional responsive tweaks */
+        @media (max-width: 640px) {
+            .space-x-4 > *:not(:last-child) {
+                margin-right: 0.5rem;
+            }
+            section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            h2 {
+                font-size: 1.875rem; /* text-3xl */
+            }
+            .text-xl {
+                font-size: 1.125rem;
+            }
+            .text-lg {
+                font-size: 1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
     </style>
 </head>
+
 
 <body class="bg-gray-50 text-gray-900">
     <!-- Navbar -->
@@ -65,8 +91,9 @@
                 <a href="#experience" class="hover:text-blue-600 nav-link">Experience</a>
                 <a href="#projects" class="hover:text-blue-600 nav-link">Projects</a>
                 <a href="#contact" class="hover:text-blue-600 nav-link">Contact</a>
-                <a href="javascript:void(0)" id="view-resume" class="text-blue-500 hover:underline">View Resume</a>
-                <a href="Aditya 2025 Resume.pdf" download class="text-blue-500 hover:underline">Download Resume</a>
+                <button id="view-resume" class="text-blue-500 hover:underline focus:outline-none">View Resume</button>
+
+                <a href="Aditya-2025 Resume - Software Dev.pdf" download class="text-blue-500 hover:underline">Download Resume</a>
             </nav>
             <button id="menu-btn" class="sm:hidden ml-auto text-2xl focus:outline-none" aria-label="Open Menu">
                 <i class="fas fa-bars"></i>
@@ -77,17 +104,17 @@
             <a href="#education" class="block py-2 nav-link">Education</a>
             <a href="#experience" class="block py-2 nav-link">Experience</a>
             <a href="#projects" class="block py-2 nav-link">Projects</a>
-            <a href="#resume" class="block py-2 nav-link">Resume</a>
             <a href="#contact" class="block py-2 nav-link">Contact</a>
-            <a href="javascript:void(0)" id="view-resume-mobile" class="block py-2 text-blue-500">View Resume</a>
-            <a href="Aditya 2025 Resume.pdf" download class="block py-2 text-blue-500">Download Resume</a>
+            <button id="view-resume" class="text-blue-500 hover:underline focus:outline-none">View Resume</button>
+
+            <a href="Aditya-2025 Resume - Software Dev.pdf" download class="block py-2 text-blue-500">Download Resume</a>
         </div>
     </header>
 
     <!-- Resume Overlay -->
     <div id="resume-overlay">
         <span class="close-btn" id="close-resume">&times;</span>
-        <iframe src="" title="Aditya Mogare Resume"></iframe>
+        <iframe src="Aditya-2025 Resume - Software Dev.pdf" title="Aditya Mogare Resume"></iframe>
     </div>
 
     <!-- Hero Section -->
@@ -174,63 +201,87 @@
             </ol>
         </section>
 
-        <!-- Projects -->
-        <section id="projects" class="fade-in">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-8">Projects</h2>
-            <div class="grid gap-8 grid-cols-1 sm:grid-cols-2">
 
-                
-                <!-- NotesMadeEasy -->
-                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
-                    <div class="flex items-center mb-2">
-                        <i class="fa-solid fa-book-open text-pink-600 text-2xl mr-3"></i>
-                        <h3 class="text-xl font-semibold">NotesMadeEasy</h3>
+              <!-- Projects -->
+              <section id="projects" class="fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center">Projects</h2>
+                <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    
+                    <!-- NotesMadeEasy -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-1 transition group">
+                        <div class="flex items-center mb-3">
+                            <i class="fa-solid fa-book-open text-pink-600 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold">NotesMadeEasy</h3>
+                        </div>
+                        <p class="text-base mb-3 text-gray-700">An AI-powered note-taking assistant that converts lectures, PDFs, and YouTube videos into crisp, structured notes.</p>
+                        <a href="https://github.com/AdityaMogare/NotesMadeEasy" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
                     </div>
-                    <p class="text-base mb-2">An AI-powered note-taking assistant that converts lectures, PDFs, and YouTube videos into crisp, structured notes.</p>
-                    <a href="https://github.com/AdityaMogare/NotesMadeEasy" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
-                </div>
-                
-                <!-- MetaBox Budget -->
-                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
-                    <div class="flex items-center mb-2">
-                        <i class="fa-solid fa-wallet text-yellow-600 text-2xl mr-3"></i>
-                        <h3 class="text-xl font-semibold">MetaBox Budget</h3>
+    
+                    <!-- LurisQA -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-1 transition group">
+                        <div class="flex items-center mb-3">
+                            <i class="fa-solid fa-scale-balanced text-red-600 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold">LurisQA</h3>
+                        </div>
+                        <p class="text-base mb-3 text-gray-700">A scalable legal-domain QA system using fine-tuned LLMs (LLaMA/Mistral) with RAG and LoRA for fast, accurate question answering over 100K+ legal documents.</p>
+                        <a href="https://github.com/AdityaMogare/Legal-QA-System-with-Fine-Tuned-LLMs-and-RAG" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
                     </div>
-                    <p class="text-base mb-2">An intelligent budgeting system for filmmakers to automate cost estimation and production planning using AI insights.</p>
-                    <a href="https://github.com/AdityaMogare/MetaBox-Budget" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
-                </div>
-                <!-- Automaton -->
-                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
-                    <div class="flex items-center mb-2">
-                        <i class="fa-solid fa-robot text-indigo-600 text-2xl mr-3"></i>
-                        <h3 class="text-xl font-semibold">Automaton</h3>
+    
+                    <!-- Automaton -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-1 transition group">
+                        <div class="flex items-center mb-3">
+                            <i class="fa-solid fa-robot text-indigo-600 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold">Automaton</h3>
+                        </div>
+                        <p class="text-base mb-3 text-gray-700">Workflow automation tool built with Node.js and Python to manage recurring tasks, approvals, and custom integrations.</p>
+                        <a href="https://github.com/AdityaMogare/Automaton" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
                     </div>
-                    <p class="text-base mb-2">Workflow automation tool built with Node.js and Python to manage recurring tasks, approvals, and custom integrations.</p>
-                    <a href="https://github.com/AdityaMogare/Automaton" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+    
+                    <!-- EcomForecast -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-1 transition group">
+                        <div class="flex items-center mb-3">
+                            <i class="fa-solid fa-chart-line text-green-600 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold">EcomForecast</h3>
+                        </div>
+                        <p class="text-base mb-3 text-gray-700">A time-series forecasting platform using LSTM, GRU, and weighted moving averages to predict e-commerce sales trends and inventory demands.</p>
+                        <a href="https://github.com/AdityaMogare/EcomForecast" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                    </div>
+    
+                    <!-- WebCrawler -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-1 transition group">
+                        <div class="flex items-center mb-3">
+                            <i class="fa-solid fa-spider text-gray-700 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold">WebCrawler</h3>
+                        </div>
+                        <p class="text-base mb-3 text-gray-700">Built with Node.js, this tool extracts and indexes web content for research and analysis using multi-threaded crawling and custom filters.</p>
+                        <a href="https://github.com/AdityaMogare/WebCrawler" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                    </div>
+    
+                    <!-- LinkedinAutomator -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-1 transition group">
+                        <div class="flex items-center mb-3">
+                            <i class="fa-solid fa-bolt text-orange-600 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold">LinkendinAutomator</h3>
+                        </div>
+                        <p class="text-base mb-3 text-gray-700">A productivity tool using Puppeteer and Node.js to automate personalized LinkedIn connection workflows and messaging.</p>
+                        <a href="https://github.com/AdityaMogare/LikendinAutomator" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                    </div>
+    
+                    <!-- MetaBox Budget -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-1 transition group">
+                        <div class="flex items-center mb-3">
+                            <i class="fa-solid fa-wallet text-yellow-600 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold">MetaBox Budget</h3>
+                        </div>
+                        <p class="text-base mb-3 text-gray-700">An intelligent budgeting system for filmmakers to automate cost estimation and production planning using AI insights.</p>
+                        <a href="https://github.com/AdityaMogare/MetaBox-Budget" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
+                    </div>
+    
                 </div>
-                        <!-- EcomForecast -->
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
-            <div class="flex items-center mb-2">
-                <i class="fa-solid fa-chart-line text-green-600 text-2xl mr-3"></i>
-                <h3 class="text-xl font-semibold">EcomForecast</h3>
-            </div>
-            <p class="text-base mb-2">A time-series forecasting platform using LSTM, GRU, and weighted moving averages to predict e-commerce sales trends and inventory demands.</p>
-            <a href="https://github.com/AdityaMogare/EcomForecast" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
-        </div>
+            </section>
+    
 
-        <!-- Legal QA System -->
-        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition group">
-            <div class="flex items-center mb-2">
-                <i class="fa-solid fa-scale-balanced text-red-600 text-2xl mr-3"></i>
-                <h3 class="text-xl font-semibold">Legal QA System</h3>
-            </div>
-            <p class="text-base mb-2">A scalable legal-domain QA system using fine-tuned LLMs (LLaMA/Mistral) with RAG and LoRA for fast, accurate question answering over 100K+ legal documents.</p>
-            <a href="https://github.com/AdityaMogare/Legal-QA-System-with-Fine-Tuned-LLMs-and-RAG" target="_blank" class="text-blue-600 font-semibold hover:underline">View on GitHub</a>
-        </div>
-    </div>
-
-            </div>
-        </section>
+  
 
         <!-- Contact -->
         <section id="contact" class="fade-in">
@@ -271,103 +322,104 @@
         </div>
         © 2025 Aditya Mogare
     </footer>
-
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Resume overlay toggle
-        const resumeOverlay = document.getElementById('resume-overlay');
-        const viewResume = document.getElementById('view-resume');
-        const viewResumeMobile = document.getElementById('view-resume-mobile');
-        const viewResumeHero = document.getElementById('view-resume-hero');
-        const closeResume = document.getElementById('close-resume');
-
-        const resumeSrc = "Aditya 2025 Resume.pdf"; // Change if your resume is in a subfolder
-
-[viewResume, viewResumeMobile, viewResumeHero].forEach(btn => {
-    btn.addEventListener('click', () => {
-        const iframe = resumeOverlay.querySelector('iframe');
-        iframe.src = resumeSrc; // Dynamically set the source
-        resumeOverlay.style.display = 'flex';
-    });
-});
-
-
-        closeResume.addEventListener('click', () => {
-            resumeOverlay.style.display = 'none';
-        });
-
-        // Smooth scroll and highlight nav
-        document.querySelectorAll('a.nav-link').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-                // Close mobile menu on click
-                if (window.innerWidth < 640) {
-                    mobileMenu.classList.add('hidden');
+        document.addEventListener('DOMContentLoaded', () => {
+            const resumeOverlay = document.getElementById('resume-overlay');
+            const iframe = resumeOverlay.querySelector('iframe');
+            const resumeSrc = "Aditya-2025 Resume - Software Dev.pdf";
+        
+            const viewResume = document.getElementById('view-resume');
+            const viewResumeMobile = document.getElementById('view-resume-mobile');
+            const viewResumeHero = document.getElementById('view-resume-hero');
+            const closeResume = document.getElementById('close-resume');
+        
+            // Handle View Resume clicks
+            [viewResume, viewResumeMobile, viewResumeHero].forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        iframe.src = resumeSrc;
+                        resumeOverlay.style.display = 'flex';
+                    });
                 }
             });
-        });
-
-        // Highlight current section in navbar
-        const sections = document.querySelectorAll('main section, #home');
-        const navLinks = document.querySelectorAll('a.nav-link');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 80;
-                if (pageYOffset >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('text-blue-600', 'font-bold');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('text-blue-600', 'font-bold');
-                }
-            });
-        });
-
-        // Fade-in animation on scroll
-        const fadeEls = document.querySelectorAll('.fade-in');
-        const fadeInOnScroll = () => {
-            fadeEls.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    el.classList.add('visible');
-                }
-            });
-        };
-        window.addEventListener('scroll', fadeInOnScroll);
-        window.addEventListener('load', fadeInOnScroll);
-
-        // Contact form validation
-        const contactForm = document.getElementById('contact-form');
-        const formError = document.getElementById('form-error');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (name === '' || !emailRegex.test(email) || message === '') {
-                formError.classList.remove('hidden');
-                return;
+        
+            // Close button
+            if (closeResume) {
+                closeResume.addEventListener('click', () => {
+                    resumeOverlay.style.display = 'none';
+                    iframe.src = ''; // optional: unload
+                });
             }
-
-            formError.classList.add('hidden');
-            contactForm.submit();
         });
+    
+            // Smooth scroll behavior
+            document.querySelectorAll('a.nav-link').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    if (window.innerWidth < 640) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+    
+            // Active nav highlighting
+            const sections = document.querySelectorAll('main section, #home');
+            const navLinks = document.querySelectorAll('a.nav-link');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 80;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('text-blue-600', 'font-bold');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('text-blue-600', 'font-bold');
+                    }
+                });
+            });
+    
+            // Fade-in scroll animation
+            const fadeEls = document.querySelectorAll('.fade-in');
+            const fadeInOnScroll = () => {
+                fadeEls.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        el.classList.add('visible');
+                    }
+                });
+            };
+            window.addEventListener('scroll', fadeInOnScroll);
+            window.addEventListener('load', fadeInOnScroll);
+    
+            // Contact form validation
+            const contactForm = document.getElementById('contact-form');
+            const formError = document.getElementById('form-error');
+            contactForm?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    
+                if (name === '' || !emailRegex.test(email) || message === '') {
+                    formError.classList.remove('hidden');
+                    return;
+                }
+    
+                formError.classList.add('hidden');
+                contactForm.submit();
+            });
+    
     </script>
+    
+
 </body>
 
 </html>
