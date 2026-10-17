@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RelayAI · Aditya Mogare</title>
+    <meta name="description"
+        content="RelayAI: an LLM learns a legacy banking workflow once, then a reviewed file replays it with no model, in 4 seconds for $0.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+    <meta name="theme-color" content="#f4f3f0">
+    <meta property="og:title" content="RelayAI · Aditya Mogare">
+    <meta property="og:description" content="Learn a bank workflow once with a model, replay it forever without one.">
+    <meta property="og:image" content="https://adityamogare.github.io/assets/demos/relayai.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <a class="skip" href="#intro">Skip to content</a>
+
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">Aditya Mogare</a>
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+                <span class="nav-toggle-label">Menu</span>
+            </button>
+            <div class="nav-panel" id="nav-panel">
+                <ul class="nav-links">
+                    <li><a href="../index.html#work">Work</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                <a class="nav-resume" href="../Aditya-Mogare-Resume.pdf" download>Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container case-head">
+        <a class="badge" href="https://youtu.be/H_ibRhz3dIo" target="_blank" rel="noopener" aria-label="Watch the RelayAI demo on YouTube">
+            <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ring-head" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#ring-head" textLength="230" lengthAdjust="spacing">Watch demo · Watch demo ·</textPath></text></svg>
+            <span class="badge-core"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z" fill="currentColor"/></svg></span>
+        </a>
+        <p class="case-kicker">02 · RelayAI · Computer-use agent</p>
+        <h1>Let the model learn the job once. <span>Then take it out of the loop.</span></h1>
+    </header>
+
+    <div class="container case-layout">
+        <aside class="toc" aria-label="On this page">
+            <a class="toc-back" href="../index.html#work">← All work</a>
+            <ol>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#design">Two halves, one file</a></li>
+                <li><a href="#no-model">Replay never calls a model</a></li>
+                <li><a href="#controls">Finding controls</a></li>
+                <li><a href="#handoff">The human handoff</a></li>
+                <li><a href="#tenants">Several institutions</a></li>
+                <li><a href="#proof">Proof</a></li>
+            </ol>
+        </aside>
+
+        <main class="case-main">
+            <section id="intro" class="case-section" style="padding-top:0">
+                <div class="case-intro">
+                    <div>
+                        <p class="label">Intro</p>
+                        <p>Banks run a lot of old software that has <strong>no API</strong>. The only way in is the screen a staff member uses. RelayAI gives an AI agent hands for those systems.</p>
+                        <p>It works in two halves. A language model drives the real screens <strong>once</strong> and works out how to do the job. What it learned is saved as a file, and from then on that file does the job <strong>with no model involved at all</strong>.</p>
+                    </div>
+                    <div class="chips-meta">
+                        <dl>
+                            <div>
+                                <dt class="label">Type</dt>
+                                <dd><span class="chip">Personal project</span><span class="chip">2026</span></dd>
+                            </div>
+                            <div>
+                                <dt class="label">Stack</dt>
+                                <dd><span class="chip">TypeScript</span><span class="chip">Node 22</span><span class="chip">Playwright</span><span class="chip">SQLite</span><span class="chip">Docker</span></dd>
+                            </div>
+                            <div>
+                                <dt class="label">Links</dt>
+                                <dd><a class="chip" href="https://github.com/AdityaMogare/RelayAI" target="_blank" rel="noopener">GitHub ↗</a><a class="chip" href="https://youtu.be/H_ibRhz3dIo" target="_blank" rel="noopener">Demo ↗</a></dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="psr">
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">!</span>
+                        <h3>Problem</h3>
+                        <p>Running a model on every transaction is <strong>slow</strong>, costs money every time, and can do something <strong>slightly different twice in a row</strong>. None of that works inside a bank.</p>
+                    </article>
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">✎</span>
+                        <h3>Solution</h3>
+                        <p>Discovery records the job into a <strong>hashed JSON capability</strong> a person can review. Replay runs that file with <strong>zero model calls</strong>, and risky steps wait for a human.</p>
+                    </article>
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">✦</span>
+                        <h3>Results</h3>
+                        <p>A dispute that takes a rep <strong>about 6 minutes</strong> by hand replays in <strong>4.3 seconds for $0</strong>, with 50 of 50 runs passing.</p>
+                    </article>
+                </div>
+
+                <figure class="case-video pcard-media tone-a">
+                    <video autoplay muted loop playsinline poster="../assets/demos/relayai.jpg"
+                        aria-label="Muted loop of RelayAI filing a dispute in the fake bank console">
+                        <source src="../assets/demos/relayai.webm" type="video/webm">
+                        <source src="../assets/demos/relayai.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </section>
+
+            <section id="design" class="case-section">
+                <p class="label">Architecture</p>
+                <h2>Two halves, joined by one file</h2>
+                <p>Discovery runs an observe, decide, act loop with the model and compiles what worked into a capability file. Replay loads the same file, verifies its hash, then runs governance, input validation, an idempotency check, tenant overlays, and preconditions before each step.</p>
+                <div class="flow" role="img" aria-label="Discovery compiles to a capability JSON file, which replay loads and runs against the bank UI">
+                    <span class="node">Discovery<small>once · 17 s · $0.09 · 13 model calls</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node hot">capabilities/X.json<small>sha256-hashed, reviewed by 2 people</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node">Replay<small>every run · 4 s · $0 · 0 model calls</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node">Legacy bank UI<small>default-deny route allowlist</small></span>
+                </div>
+                <p class="flow-caption">Everything left of the file happens once. Everything right of it happens in production. The file is the only thing that crosses.</p>
+                <p>I made the recording <strong>data, not generated code</strong>. A JSON contract can be reviewed in a pull request, read by a calling agent at run time, and upgraded by a migration. A generated Playwright script gives none of that; you'd be diffing a script instead of a contract.</p>
+            </section>
+
+            <section id="no-model" class="case-section">
+                <p class="label">Key decision</p>
+                <h2>Replay never calls a model, full stop</h2>
+                <p>The value of the project is that production is cheap, fast, and repeatable. A model in the replay path gives all three back.</p>
+                <p>I considered a small, bounded model retry when a step fails, and I wanted it. The cost of saying no is real: a tiny UI change that a model could shrug off now forces a re-recording. I'd revisit it only as a separate, labelled mode that is never the default and logs every firing.</p>
+            </section>
+
+            <section id="controls" class="case-section">
+                <p class="label">Key decision</p>
+                <h2>Find controls the way a screen reader does</h2>
+                <p>Legacy bank screens have no automation IDs, and their markup changes for reasons unrelated to meaning (element IDs like <code>ctl00_ctl32_dgAcct_ctl04_lblVal</code> change on every load). So every control is found four ways, best first: <strong>accessibility role and exact name</strong>, then label, then visible text, then CSS.</p>
+                <p>The second reason matters more: <strong>falling back is a signal</strong>. A run that only succeeds on the CSS fallback isn't healthy, it's a warning. Drift detection came out of this almost for free.</p>
+            </section>
+
+            <section id="handoff" class="case-section">
+                <p class="label">Safety</p>
+                <h2>When a person has to decide</h2>
+                <p>Irreversible steps, like confirming a new account or filing a dispute, pause for a human in the <strong>same browser session</strong>:</p>
+                <ol class="steps">
+                    <li>The browser stops on the confirm screen with a red banner and session ID.</li>
+                    <li>The operator page shows why it stopped, with a screenshot.</li>
+                    <li>A teller claims it and clicks Confirm themselves, in that same window.</li>
+                    <li>Automation re-observes, sees the work is done, and <strong>does not click again</strong>.</li>
+                </ol>
+                <p>If nobody claims it within two minutes, the run is abandoned and the button is not pressed. Around that sit a default-deny route allowlist (the agent physically can't reach <code>/admin/wire</code>), a cap of 30 runs per capability per hour, vault references instead of passwords, and customer values redacted from logs by name.</p>
+            </section>
+
+            <section id="tenants" class="case-section">
+                <p class="label">Portability</p>
+                <h2>One recording, several institutions</h2>
+                <p>Credit unions often run the same vendor product with different wording. A capability recorded once against one tenant runs on another with a few lines of YAML instead of a new recording:</p>
+                <pre class="snippet"># overlays/tenants/tenant-14.yaml
+copy:
+  Search: Find Member
+  Member Lookup: Find a Member
+  Confirm: Submit Request</pre>
+                <p>Overlays can rename controls and add error screens, but they <strong>cannot change which steps are dangerous</strong>. Risk is re-checked after the rename, because the whole point of "Confirm" becoming "Submit Request" is that it's still the dangerous button.</p>
+            </section>
+
+            <section id="proof" class="case-section">
+                <p class="label">Proof</p>
+                <h2>Numbers you can rerun</h2>
+                <p>There's no real bank to test against, so the repo ships a deliberately awkward fake one: changing element IDs, a legacy frameset, a 90-second login timeout, popups, flaky 503s, and three visual skins. <code>npm run verify</code> runs 27 scenarios in about 40 seconds with no API key.</p>
+                <table class="numbers">
+                    <thead>
+                        <tr><th>Run</th><th>Model</th><th>Time</th><th>Calls</th><th>Cost</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Discovery</td><td>gpt-4o</td><td>16.8 s</td><td>13</td><td>$0.09</td></tr>
+                        <tr><td>Replay</td><td>none</td><td>4.3 s</td><td>0</td><td>$0.00</td></tr>
+                        <tr><td>Replay × 50</td><td>none</td><td>76.3 s</td><td>0</td><td>$0.00 · 50/50 pass</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:1.2rem">190 tests across 28 files, and CI runs typecheck, tests, and the verify table on every push. Decisions and their costs are written up in the repo's <a href="https://github.com/AdityaMogare/RelayAI" target="_blank" rel="noopener"><code>DECISIONS.md</code></a>.</p>
+            </section>
+        </main>
+    </div>
+
+    <div class="container more">
+        <p class="label">More projects</p>
+        <div class="more-grid">
+            <a href="avery.html"><img src="../assets/demos/avery.jpg" alt="" loading="lazy"><span>Avery</span></a>
+            <a href="studyai.html"><img src="../assets/demos/studyai.jpg" alt="" loading="lazy"><span>StudyAI</span></a>
+            <a href="devlite.html"><img src="../assets/demos/devlite.jpg" alt="" loading="lazy"><span>DevLite</span></a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Aditya Prasanna Mogare</p>
+            <a href="mailto:mogare@usc.edu">mogare@usc.edu</a>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

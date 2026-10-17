@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avery · Aditya Mogare</title>
+    <meta name="description"
+        content="Avery: a claims-support conversational agent that follows an SOP, gates every disclosure behind identity verification, and is held to 46 executable test specs.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+    <meta name="theme-color" content="#f4f3f0">
+    <meta property="og:title" content="Avery · Aditya Mogare">
+    <meta property="og:description" content="A claims-support agent: strict where it must be, flexible where it helps. Try it live.">
+    <meta property="og:image" content="https://adityamogare.github.io/assets/demos/avery.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <a class="skip" href="#intro">Skip to content</a>
+
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">Aditya Mogare</a>
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+                <span class="nav-toggle-label">Menu</span>
+            </button>
+            <div class="nav-panel" id="nav-panel">
+                <ul class="nav-links">
+                    <li><a href="../index.html#work">Work</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                <a class="nav-resume" href="../Aditya-Mogare-Resume.pdf" download>Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container case-head">
+        <a class="badge" href="https://157-230-226-162.sslip.io/" target="_blank" rel="noopener" aria-label="Try Avery live in your browser">
+            <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ring-head" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#ring-head" textLength="230" lengthAdjust="spacing">Try it live · Try it live ·</textPath></text></svg>
+            <span class="badge-core"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <p class="case-kicker">01 · Avery · Claims-support agent</p>
+        <h1>Strict where it must be. <span>Flexible where it helps.</span></h1>
+    </header>
+
+    <div class="container case-layout">
+        <aside class="toc" aria-label="On this page">
+            <a class="toc-back" href="../index.html#work">← All work</a>
+            <ol>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#try">Try it in a minute</a></li>
+                <li><a href="#sop">The SOP as phases</a></li>
+                <li><a href="#gate">The identity gate</a></li>
+                <li><a href="#grounded">Grounded answers</a></li>
+                <li><a href="#specs">46 executable specs</a></li>
+            </ol>
+        </aside>
+
+        <main class="case-main">
+            <section id="intro" class="case-section" style="padding-top:0">
+                <div class="case-intro">
+                    <div>
+                        <p class="label">Intro</p>
+                        <p>Avery handles insurance claims calls. The hard part isn't sounding helpful; it's following a standard operating procedure exactly: <strong>verify identity before disclosing anything</strong>, get consent before talking to a representative, never promise an outcome, and hand off to a human at the right moment, while still handling callers who are frustrated, off topic, or trying to talk their way past the rules.</p>
+                        <p>Every decision the agent makes is visible next to the conversation: the current SOP phase, the identity gate, what it remembered, which guardrails fired, and a full event trace.</p>
+                    </div>
+                    <div class="chips-meta">
+                        <dl>
+                            <div>
+                                <dt class="label">Year</dt>
+                                <dd><span class="chip">2026</span></dd>
+                            </div>
+                            <div>
+                                <dt class="label">Models</dt>
+                                <dd><span class="chip">OpenAI</span><span class="chip">Gemini</span><span class="chip">OpenRouter</span><span class="chip">Offline mode</span></dd>
+                            </div>
+                            <div>
+                                <dt class="label">Links</dt>
+                                <dd><a class="chip" href="https://157-230-226-162.sslip.io/" target="_blank" rel="noopener">Try it live ↗</a></dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="psr">
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">!</span>
+                        <h3>Problem</h3>
+                        <p>A free-form LLM will <strong>skip verification</strong> if asked nicely, invent commitments, and drift off script. In claims support, each of those is a <strong>compliance failure</strong>.</p>
+                    </article>
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">✎</span>
+                        <h3>Solution</h3>
+                        <p>The SOP is <strong>explicit phases and gates</strong>; answers come only from <strong>cited guideline facts</strong>, and a verifier checks every turn.</p>
+                    </article>
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">✦</span>
+                        <h3>Results</h3>
+                        <p><strong>46 runnable specs</strong> (16 core SOP, 30 edge cases) that anyone can run from the live app, with or without an API key.</p>
+                    </article>
+                </div>
+
+                <figure class="case-video pcard-media tone-b">
+                    <video autoplay muted loop playsinline poster="../assets/demos/avery.jpg"
+                        aria-label="Muted loop of Avery verifying a caller, answering with citations, and refusing a prompt injection">
+                        <source src="../assets/demos/avery.webm" type="video/webm">
+                        <source src="../assets/demos/avery.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Recorded from the live app in offline mode: one-utterance verification, a cited answer, then an injection attempt.</figcaption>
+                </figure>
+            </section>
+
+            <section id="try" class="case-section">
+                <p class="label">For reviewers</p>
+                <h2>Try it in a minute</h2>
+                <p>No API key is needed: without one, the app runs in offline mode with templated, grounded responses. Add an OpenAI, Gemini, or OpenRouter key at the top to use a live model.</p>
+                <ol class="steps">
+                    <li>Open the <a href="https://157-230-226-162.sslip.io/" target="_blank" rel="noopener"><strong>live app</strong></a>, click <strong>Demo test case</strong>, then <strong>Send</strong>. Watch the SOP phase and identity gate update on the right.</li>
+                    <li>Click <strong>Injection</strong> and send it. The agent refuses to change its rules, and the guardrail counter ticks up.</li>
+                    <li>Click <strong>New session</strong>, then <strong>Wrong DOB</strong> or <strong>Representative</strong> to see the gate hold.</li>
+                    <li>Open <strong>Test cases</strong> and press <strong>Run</strong> on any spec to check it against its expectations.</li>
+                </ol>
+            </section>
+
+            <section id="sop" class="case-section">
+                <p class="label">Architecture</p>
+                <h2>The SOP as phases, not a prompt</h2>
+                <p>Instead of asking the model to remember a procedure, the procedure is the structure. A call moves through four phases, and each turn records the state transitions it caused (for example <code>VERIFIED → CASE_SELECTED → ANSWER_CASE</code>).</p>
+                <div class="flow" role="img" aria-label="Four SOP phases: verify ID, resolve intent, process case, post process">
+                    <span class="node hot">Verify ID<small>identity gate</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node">Resolve intent<small>which claim, which question</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node">Process case<small>grounded answer</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node">Post process<small>summary email, handoff</small></span>
+                </div>
+                <p class="flow-caption">Memory crosses phase boundaries: an intent stated before verification ("I'm calling about my denied claim from January") is stored and used afterwards instead of asking again.</p>
+            </section>
+
+            <section id="gate" class="case-section">
+                <p class="label">Key decision</p>
+                <h2>Nothing is disclosed until the gate opens</h2>
+                <p>Callers verify with <strong>any three</strong> of full name, date of birth, phone, email, or the last four digits of an SSN or national ID. Claim access stays blocked until they do.</p>
+                <ul>
+                    <li><strong>Three distinct failed attempts</strong> lock verification and transfer to a human, with no hint about which field was wrong.</li>
+                    <li>An <strong>authorized representative</strong> can verify the policyholder, but claim data stays gated until the policyholder's consent arrives. If it never does, the call escalates without disclosing details.</li>
+                    <li>A caller who knows the policyholder's details but <strong>isn't an authorized representative</strong> gets nothing.</li>
+                    <li>A verified caller asking about <strong>someone else's claim ID</strong> gets neither a confirmation nor a denial.</li>
+                </ul>
+            </section>
+
+            <section id="grounded" class="case-section">
+                <p class="label">Key decision</p>
+                <h2>Answers come from cited facts, then get checked</h2>
+                <p>Each response is built from the guideline facts available for that case, and the UI shows exactly which facts the responder could use and which ones it cited. A verifier checks every turn and marks it pass or fail. Answers are tagged <strong>grounded</strong>, so a reviewer can tell at a glance whether a sentence came from the record or from the model.</p>
+                <p>Guardrails are counted, not just applied: off-topic attempts, injections, and frustration each have a counter, and repeated off-topic pushback eventually leads to a human-transfer offer.</p>
+            </section>
+
+            <section id="specs" class="case-section">
+                <p class="label">Proof</p>
+                <h2>46 specs, each traced to why it exists</h2>
+                <p>The test cases live in <code>fixtures/specs/scenarios.json</code> and run from the app itself: <strong>Run</strong> sends every turn in a fresh session and checks the spec's expectations and trace properties; <strong>Step</strong> sends one turn at a time.</p>
+                <p>The 16 core specs cover the SOP. The 30 edge cases are tagged with the guardrail they protect and where they came from: findings from <strong>live evals</strong>, <strong>simulated-user evals</strong> (including an angry persona), UI review, and the requirements doc.</p>
+                <table class="numbers">
+                    <thead>
+                        <tr><th>Guardrail</th><th>Example of what it prevents</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Commitments</td><td>Promising "you won't need to repeat yourself" on a transfer no fact supports</td></tr>
+                        <tr><td>Outcome prediction</td><td>Telling a representative "she will approve it" while consent is pending</td></tr>
+                        <tr><td>Addressing</td><td>Thanking a verified representative by the policyholder's name</td></tr>
+                        <tr><td>Scope discipline</td><td>A vague answer and an early human offer for "What is RL?" after verification</td></tr>
+                        <tr><td>Amount meaning</td><td>Treating an expected reimbursement or allowed maximum as a promised payout</td></tr>
+                        <tr><td>Also covered</td><td>Capabilities, state contradictions, session context, decision fidelity</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <div class="container more">
+        <p class="label">More projects</p>
+        <div class="more-grid">
+            <a href="relayai.html"><img src="../assets/demos/relayai.jpg" alt="" loading="lazy"><span>RelayAI</span></a>
+            <a href="studyai.html"><img src="../assets/demos/studyai.jpg" alt="" loading="lazy"><span>StudyAI</span></a>
+            <a href="devlite.html"><img src="../assets/demos/devlite.jpg" alt="" loading="lazy"><span>DevLite</span></a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Aditya Prasanna Mogare</p>
+            <a href="mailto:mogare@usc.edu">mogare@usc.edu</a>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

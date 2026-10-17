@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevLite · Aditya Mogare</title>
+    <meta name="description"
+        content="DevLite: a C++ developer environment doctor where probes gather facts and every rule is a pure, testable function.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+    <meta name="theme-color" content="#f4f3f0">
+    <meta property="og:title" content="DevLite · Aditya Mogare">
+    <meta property="og:description" content="One command tells you what's wrong with your dev setup, in plain English.">
+    <meta property="og:image" content="https://adityamogare.github.io/assets/demos/devlite.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <a class="skip" href="#intro">Skip to content</a>
+
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">Aditya Mogare</a>
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+                <span class="nav-toggle-label">Menu</span>
+            </button>
+            <div class="nav-panel" id="nav-panel">
+                <ul class="nav-links">
+                    <li><a href="../index.html#work">Work</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                <a class="nav-resume" href="../Aditya-Mogare-Resume.pdf" download>Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container case-head">
+        <a class="badge" href="https://youtu.be/xDBM5eWkbQY" target="_blank" rel="noopener" aria-label="Watch the DevLite demo on YouTube">
+            <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ring-head" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#ring-head" textLength="230" lengthAdjust="spacing">Watch demo · Watch demo ·</textPath></text></svg>
+            <span class="badge-core"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z" fill="currentColor"/></svg></span>
+        </a>
+        <p class="case-kicker">04 · DevLite · Developer CLI in C++</p>
+        <h1>"Works on my machine" is a bug report. <span>DevLite reads the machine.</span></h1>
+    </header>
+
+    <div class="container case-layout">
+        <aside class="toc" aria-label="On this page">
+            <a class="toc-back" href="../index.html#work">← All work</a>
+            <ol>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#design">Probes and rules</a></li>
+                <li><a href="#pure">Why rules are pure</a></li>
+                <li><a href="#testing">Testing broken machines</a></li>
+                <li><a href="#status">Status and next</a></li>
+            </ol>
+        </aside>
+
+        <main class="case-main">
+            <section id="intro" class="case-section" style="padding-top:0">
+                <div class="case-intro">
+                    <div>
+                        <p class="label">Intro</p>
+                        <p>Setup problems, like a shadowed binary on <code>PATH</code> or a misconfigured Git, eat hours and are hard to describe in a ticket. DevLite is a lightweight <strong>developer environment doctor</strong>: one command tells you what is wrong with your setup and how to fix it, in plain English.</p>
+                        <p>It's deliberately small, and built around one architectural rule that makes the whole thing testable.</p>
+                    </div>
+                    <div class="chips-meta">
+                        <dl>
+                            <div>
+                                <dt class="label">Type</dt>
+                                <dd><span class="chip">Personal project</span><span class="chip">v0.1 · 2026</span></dd>
+                            </div>
+                            <div>
+                                <dt class="label">Stack</dt>
+                                <dd><span class="chip">C++20</span><span class="chip">CMake</span><span class="chip">GoogleTest</span><span class="chip">Homebrew</span><span class="chip">GitHub Actions</span></dd>
+                            </div>
+                            <div>
+                                <dt class="label">Links</dt>
+                                <dd><a class="chip" href="https://github.com/AdityaMogare/Devlite" target="_blank" rel="noopener">GitHub ↗</a><a class="chip" href="https://youtu.be/xDBM5eWkbQY" target="_blank" rel="noopener">Demo ↗</a></dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="psr">
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">!</span>
+                        <h3>Problem</h3>
+                        <p>Environment bugs are <strong>slow to diagnose</strong> and depend on state that's hard to reproduce on another machine.</p>
+                    </article>
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">✎</span>
+                        <h3>Solution</h3>
+                        <p><strong>Probes</strong> gather raw facts once; <strong>rules</strong> are pure functions from facts to findings, printed as text or JSON.</p>
+                    </article>
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">✦</span>
+                        <h3>Results</h3>
+                        <p>Deterministic, golden-tested output, <strong>26 tests and 4 scripted broken environments</strong>, installable with Homebrew.</p>
+                    </article>
+                </div>
+
+                <figure class="case-video pcard-media tone-b">
+                    <video autoplay muted loop playsinline poster="../assets/demos/devlite.jpg"
+                        aria-label="Muted loop of DevLite running in a terminal">
+                        <source src="../assets/demos/devlite.webm" type="video/webm">
+                        <source src="../assets/demos/devlite.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </section>
+
+            <section id="design" class="case-section">
+                <p class="label">Architecture</p>
+                <h2>Probes gather, rules decide</h2>
+                <p>Probes collect raw data about the platform, <code>PATH</code>, and Git into a single <code>Facts</code> struct. Rules read that struct and return <code>Finding</code> values. Formatters turn findings into text or JSON. Only <code>src/platform/</code> is allowed to touch the OS: environment, PATH resolution, and subprocesses.</p>
+                <div class="flow" role="img" aria-label="Probes produce Facts, rules turn Facts into Findings, formatters print text or JSON">
+                    <span class="node">Probes<small>platform · PATH · Git</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node hot">Facts<small>one struct, frozen for v1</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node">Rules<small>pure functions</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node">Findings</span>
+                    <span class="arrow">→</span>
+                    <span class="node">Text or JSON<small>golden-tested</small></span>
+                </div>
+                <pre class="snippet">brew tap adityamogare/devlite https://github.com/AdityaMogare/Devlite.git
+brew install devlite
+devlite doctor          # plain-English report
+devlite doctor --json   # same findings, machine-readable</pre>
+            </section>
+
+            <section id="pure" class="case-section">
+                <p class="label">Key decision</p>
+                <h2>Rules never touch the OS</h2>
+                <p>Keeping rules as pure functions from <code>Facts</code> to <code>Finding</code> does three things at once:</p>
+                <ul>
+                    <li>Rules can be tested <strong>without a broken machine</strong>: build a <code>Facts</code> value in the test and assert on the findings.</li>
+                    <li>There's <strong>no ordering dependency</strong> between checks, because no rule's output feeds another rule's input.</li>
+                    <li>Output stays <strong>deterministic</strong>, which is what makes golden tests on the text and JSON formats possible.</li>
+                </ul>
+                <p>The repo's own README puts it plainly: "Do not blur it."</p>
+            </section>
+
+            <section id="testing" class="case-section">
+                <p class="label">Proof</p>
+                <h2>Testing broken machines without breaking one</h2>
+                <p>Unit tests use a fake environment for the platform layer, and golden files pin the exact text and JSON output. An integration harness runs the binary against <strong>four scripted broken environments</strong>. After any change to the OS-facing code, the suite runs again under <strong>AddressSanitizer and UndefinedBehaviorSanitizer</strong>. CI builds and tests on every push.</p>
+                <pre class="snippet">ctest --test-dir build --output-on-failure     # 26 unit + golden tests
+./tests/integration/run_fixtures.sh            # 4 fixture environments</pre>
+            </section>
+
+            <section id="status" class="case-section">
+                <p class="label">Status</p>
+                <h2>What's done, and what's next</h2>
+                <p>v0.1 runs on macOS 11+ with the platform, PATH, and Git probes and their first rules in place. The next piece is the <strong>Python probe and its five rules</strong>, followed by the virtual-environment and repository rules.</p>
+            </section>
+        </main>
+    </div>
+
+    <div class="container more">
+        <p class="label">More projects</p>
+        <div class="more-grid">
+            <a href="avery.html"><img src="../assets/demos/avery.jpg" alt="" loading="lazy"><span>Avery</span></a>
+            <a href="relayai.html"><img src="../assets/demos/relayai.jpg" alt="" loading="lazy"><span>RelayAI</span></a>
+            <a href="studyai.html"><img src="../assets/demos/studyai.jpg" alt="" loading="lazy"><span>StudyAI</span></a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Aditya Prasanna Mogare</p>
+            <a href="mailto:mogare@usc.edu">mogare@usc.edu</a>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

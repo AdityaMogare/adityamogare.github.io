@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyAI · Aditya Mogare</title>
+    <meta name="description"
+        content="StudyAI: a Discord agent that links student questions to syllabus topics with vector search and sends TAs a weekly report of blind spots.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+    <meta name="theme-color" content="#f4f3f0">
+    <meta property="og:title" content="StudyAI · Aditya Mogare">
+    <meta property="og:description" content="A classroom memory agent that tells TAs what students are quietly stuck on.">
+    <meta property="og:image" content="https://adityamogare.github.io/assets/demos/studyai.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <a class="skip" href="#intro">Skip to content</a>
+
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">Aditya Mogare</a>
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+                <span class="nav-toggle-label">Menu</span>
+            </button>
+            <div class="nav-panel" id="nav-panel">
+                <ul class="nav-links">
+                    <li><a href="../index.html#work">Work</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                <a class="nav-resume" href="../Aditya-Mogare-Resume.pdf" download>Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container case-head">
+        <a class="badge" href="https://youtu.be/15ZmykMZmiM" target="_blank" rel="noopener" aria-label="Watch the StudyAI demo on YouTube">
+            <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ring-head" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs><text><textPath href="#ring-head" textLength="230" lengthAdjust="spacing">Watch demo · Watch demo ·</textPath></text></svg>
+            <span class="badge-core"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z" fill="currentColor"/></svg></span>
+        </a>
+        <p class="case-kicker">03 · StudyAI · Classroom memory agent</p>
+        <h1>A class asks hundreds of questions. <span>Which ones should a TA worry about?</span></h1>
+    </header>
+
+    <div class="container case-layout">
+        <aside class="toc" aria-label="On this page">
+            <a class="toc-back" href="../index.html#work">← All work</a>
+            <ol>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#pipeline">Question to topic</a></li>
+                <li><a href="#report">The Friday report</a></li>
+                <li><a href="#local">Local first</a></li>
+                <li><a href="#reliability">Reliability</a></li>
+            </ol>
+        </aside>
+
+        <main class="case-main">
+            <section id="intro" class="case-section" style="padding-top:0">
+                <div class="case-intro">
+                    <div>
+                        <p class="label">Intro</p>
+                        <p>Students ask questions in a class Discord all week. Teaching assistants answer them one at a time, but nobody sees the <strong>pattern</strong>: which syllabus topics keep coming up, which never do, and which questions stay unresolved.</p>
+                        <p>StudyAI passively captures those questions, maps each one to a syllabus topic with <strong>CockroachDB vector search</strong>, tracks whether it was resolved, and turns the class's collective blind spots into a TA plan.</p>
+                    </div>
+                    <div class="chips-meta">
+                        <dl>
+                            <div>
+                                <dt class="label">Type</dt>
+                                <dd><span class="chip">Hackathon build</span><span class="chip">2026</span></dd>
+                            </div>
+                            <div>
+                                <dt class="label">Stack</dt>
+                                <dd><span class="chip">Python</span><span class="chip">AWS Lambda</span><span class="chip">EventBridge</span><span class="chip">Bedrock</span><span class="chip">CockroachDB</span><span class="chip">Discord</span></dd>
+                            </div>
+                            <div>
+                                <dt class="label">Links</dt>
+                                <dd><a class="chip" href="https://github.com/AdityaMogare/StudyAI" target="_blank" rel="noopener">GitHub ↗</a><a class="chip" href="https://youtu.be/15ZmykMZmiM" target="_blank" rel="noopener">Demo ↗</a></dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="psr">
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">!</span>
+                        <h3>Problem</h3>
+                        <p>TAs only find out which topics a class <strong>quietly struggled with</strong> when the exam results come in.</p>
+                    </article>
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">✎</span>
+                        <h3>Solution</h3>
+                        <p>Every question is <strong>embedded and linked to a syllabus topic</strong>; a weekly job finds untouched topics and open clusters and drafts a plan.</p>
+                    </article>
+                    <article>
+                        <span class="psr-icon" aria-hidden="true">✦</span>
+                        <h3>Results</h3>
+                        <p>A <strong>Friday Discord report</strong> with coverage, open questions, and a TA plan, plus slash commands for students to drill weak topics.</p>
+                    </article>
+                </div>
+
+                <figure class="case-video pcard-media tone-c">
+                    <video autoplay muted loop playsinline poster="../assets/demos/studyai.jpg"
+                        aria-label="Muted loop of StudyAI in Discord">
+                        <source src="../assets/demos/studyai.webm" type="video/webm">
+                        <source src="../assets/demos/studyai.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </section>
+
+            <section id="pipeline" class="case-section">
+                <p class="label">Architecture</p>
+                <h2>From a Discord message to a syllabus topic</h2>
+                <p>A small gateway relay forwards new messages and reactions to API Gateway. The ingestion Lambda embeds the question with Bedrock Titan, stores it, and runs a vector nearest-neighbor query to link it to syllabus topics. Every action the agent takes is written to an <code>agent_actions</code> table.</p>
+                <div class="flow" role="img" aria-label="Discord to gateway relay to API Gateway to ingestion Lambda to Bedrock embeddings to CockroachDB vector search">
+                    <span class="node">Discord<small>#questions, /ask</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node">Gateway relay</span>
+                    <span class="arrow">→</span>
+                    <span class="node">API Gateway<small>Ed25519 verified</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node">Ingestion Lambda<small>Titan embedding</small></span>
+                    <span class="arrow">→</span>
+                    <span class="node hot">CockroachDB VECTOR<small>topic link if L2 &lt; 0.3</small></span>
+                </div>
+                <p class="flow-caption">Syllabus topics are loaded ahead of time: a CLI extracts topics from the syllabus with Claude, embeds them, and writes them to the same table.</p>
+                <p>Resolution happens in Discord too: <code>/resolved</code>, a ✅ reaction, or a button updates the question's status and logs it, so coverage reflects what was actually answered, not just what was asked.</p>
+            </section>
+
+            <section id="report" class="case-section">
+                <p class="label">Acting on memory</p>
+                <h2>The Friday report</h2>
+                <p>An EventBridge cron fires every Friday and runs the gap-report Lambda. It reads topic coverage and recent questions, then posts a Discord embed to the exam-prep channel with <strong>untouched topics, open question clusters, and a recommended TA plan</strong> written by the model.</p>
+                <p>TAs can also pull it on demand with <code>/gap-report</code> or <code>/memory</code>. For students, <code>/drill</code> asks one question and waits for an answer, and <code>/interview-ready</code> lists topics they've never drilled or keep failing.</p>
+            </section>
+
+            <section id="local" class="case-section">
+                <p class="label">Key decision</p>
+                <h2>Local first, cloud when ready</h2>
+                <p>The same handlers run on a local FastAPI runtime with SQLite and no AWS account, or as Lambdas deployed with AWS SAM. That means the agent can run against a real Discord server before anything is deployed, and AWS is only needed once the data looks right.</p>
+                <p>Answers degrade gracefully: <code>/ask</code> tries OpenAI, then Bedrock, then a static course pack, with a configurable daily cap so a busy week can't run up the bill.</p>
+            </section>
+
+            <section id="reliability" class="case-section">
+                <p class="label">Reliability</p>
+                <h2>Built to fail quietly, not loudly</h2>
+                <ul>
+                    <li><strong>Idempotent writes:</strong> questions are upserted on Discord message ID, so retries never double-count.</li>
+                    <li><strong>Verified requests:</strong> the interactions endpoint checks Discord's Ed25519 signature.</li>
+                    <li><strong>Least privilege:</strong> the Lambda role can only invoke the model.</li>
+                    <li><strong>Partial results:</strong> if the model call fails, the gap report still posts coverage.</li>
+                    <li><strong>Audit trail:</strong> every link, resolve, and report is queryable in <code>agent_actions</code>, so a TA can see why a topic was flagged.</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <div class="container more">
+        <p class="label">More projects</p>
+        <div class="more-grid">
+            <a href="avery.html"><img src="../assets/demos/avery.jpg" alt="" loading="lazy"><span>Avery</span></a>
+            <a href="relayai.html"><img src="../assets/demos/relayai.jpg" alt="" loading="lazy"><span>RelayAI</span></a>
+            <a href="devlite.html"><img src="../assets/demos/devlite.jpg" alt="" loading="lazy"><span>DevLite</span></a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Aditya Prasanna Mogare</p>
+            <a href="mailto:mogare@usc.edu">mogare@usc.edu</a>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
